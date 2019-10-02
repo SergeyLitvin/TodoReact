@@ -8,11 +8,11 @@ import TodoList from './components/todo-list';
 const App = () => {
     return (
         <div>
-            <AppHeader />
-            <SearchPanel />
-            <TodoList />
+        <AppHeader />
+        <SearchPanel />
+        <TodoList />
         </div>
     )
 };
 
-ReactDom.render(<App />, document.getElementById('root'));
+ReactDom.render( <App /> , document.getElementById('root'));
