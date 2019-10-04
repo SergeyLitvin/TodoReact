@@ -14,10 +14,10 @@ const App = () => {
     ];
 
     return (
-        <div>
-        <AppHeader />
-        <SearchPanel />
-        <TodoList todos={todoData}/>
+        <div className="container">
+            <AppHeader />
+            <SearchPanel />
+            <TodoList todos={todoData} />
         </div>
     )
 };
