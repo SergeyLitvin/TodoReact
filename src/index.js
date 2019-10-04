@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import './index.css';
 
 import AppHeader from './components/app-header';
 import SearchPanel from './components/search-panel';
+import ItemStatusFilter from './components/item-status-filter';
 import TodoList from './components/todo-list';
 
 const App = () => {
@@ -16,7 +18,11 @@ const App = () => {
     return (
         <div className="container">
             <AppHeader />
-            <SearchPanel />
+            <div className="search-panel-wrap">
+                <SearchPanel />
+                <ItemStatusFilter />
+            </div>
+
             <TodoList todos={todoData} />
         </div>
     )
