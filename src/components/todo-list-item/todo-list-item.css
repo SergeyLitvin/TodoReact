@@ -9,6 +9,7 @@
     line-height: 35px;
     cursor: pointer;
     user-select: none;
+    cursor: pointer;
 }
 
 .todo-list-item.done .todo-list-item-label {
@@ -31,6 +32,7 @@
 .todo-list-item .btn {
     width: 2rem;
     height: 2rem;
+    cursor: pointer;
 }
 
 .todo-list-item .btn:first-child {
