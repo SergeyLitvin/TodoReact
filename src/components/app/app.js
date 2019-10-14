@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import AppHeader from "../app-header/";
 import SearchPanel from "../search-panel";
 import TodoList from "../todo-list";
@@ -9,17 +9,22 @@ import './app.css';
 
 
 export default class App extends Component {
+    maxId = 100;
 
     state = {
         todoData: [
             {id: 1, label: 'Drink green tea.', important: false},
-            {id: 2, label: 'Make awesome todo-react app', important: true},
+            {
+                id: 2,
+                label: 'Make awesome todo-react app',
+                important: true
+            },
             {id: 3, label: 'Take a walk on nature.', important: false}
         ]
     };
 
     deleteItem = (id) => {
-        this.setState( ({ todoData }) => {
+        this.setState(({todoData}) => {
             const idx = todoData.findIndex((el) => el.id === id);
             // todoData.splice(idx, 1); // нельзя изменять существующий массив или объект (bad practice react)
 
@@ -29,6 +34,23 @@ export default class App extends Component {
                 todoData: newArray
             }
         });
+    };
+
+    addItem = () => {
+
+        const newItem = {
+            id: this.maxId++,
+            label: `Some text`,
+            important: false
+        };
+
+        this.setState( ( {todoData} ) => {
+            const newArr = [...todoData, newItem];
+
+            return {
+                todoData: newArr
+            }
+        })
     };
 
     render() {
@@ -41,10 +63,10 @@ export default class App extends Component {
                 </div>
 
                 <TodoList
-                    todos={ this.state.todoData }
-                    onDeleted={ this.deleteItem }
+                    todos={this.state.todoData}
+                    onDeleted={this.deleteItem}
                 />
-                <ItemAddForm />
+                <ItemAddForm onItemAdded={this.addItem}/>
             </div>
         )
     }
