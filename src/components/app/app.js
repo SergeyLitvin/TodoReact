@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AppHeader from "../app-header/";
 import SearchPanel from "../search-panel";
 import TodoList from "../todo-list";
+import ItemAddForm from "../item-add-form";
 import ItemStatusFilter from "../item-status-filter";
 
 import './app.css';
@@ -43,6 +44,7 @@ export default class App extends Component {
                     todos={ this.state.todoData }
                     onDeleted={ this.deleteItem }
                 />
+                <ItemAddForm />
             </div>
         )
     }
