@@ -13,25 +13,30 @@ export default class TodoListItem extends Component {
         })
     };
 
+    onMarkImportant = () => {
+        this.setState({
+            important: true
+        })
+    };
+
     render() {
 
-        const {label, important = false} = this.props;
-        const {done} = this.state;
+        const { label } = this.props;
+        const { done, important } = this.state;
 
-        const style = {
-            color: important ? 'tomato' : 'black'
-        };
-
-        let classNames = 'todo-list-item ';
+        let classNames = 'todo-list-item';
 
         if(done) {
-            classNames += 'done';
+            classNames += ' done';
+        }
+
+        if(important) {
+            classNames += ' important';
         }
         return (
             <div className={classNames}>
                 <span
                     className="todo-list-item-label flex-grow-1"
-                    style={style}
                     onClick={this.onLabelClick}
                 >
                     {label}
@@ -42,7 +47,9 @@ export default class TodoListItem extends Component {
                         <i className="fa fa-trash"></i>
                     </button>
                     <button type="button"
-                            className="btn btn-outline-success btn-sm">
+                            className="btn btn-outline-success btn-sm"
+                            onClick={this.onMarkImportant}
+                    >
                         <i className="fa fa-exclamation"></i>
                     </button>
                 </div>

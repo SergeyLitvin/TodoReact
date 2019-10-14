@@ -17,7 +17,7 @@
 
 .todo-list-item.important .todo-list-item-label {
     font-weight: 700;
-    color: steelblue;
+    color: tomato;
 }
 
 .todo-list-item .btn-wrap {
