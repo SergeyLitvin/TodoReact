@@ -13,13 +13,21 @@ export default class App extends Component {
 
     state = {
         todoData: [
-            {id: 1, label: 'Drink green tea.', important: false},
+            {
+                id: 1,
+                label: 'Drink green tea.',
+                important: false
+            },
             {
                 id: 2,
                 label: 'Make awesome todo-react app',
                 important: true
             },
-            {id: 3, label: 'Take a walk on nature.', important: false}
+            {
+                id: 3,
+                label: 'Take a walk on nature.',
+                important: false
+            }
         ]
     };
 
@@ -44,13 +52,21 @@ export default class App extends Component {
             important: false
         };
 
-        this.setState( ( {todoData} ) => {
+        this.setState(({todoData}) => {
             const newArr = [...todoData, newItem];
 
             return {
                 todoData: newArr
             }
         })
+    };
+
+    onToggleImportant = (id) => {
+        console.log('Toggle Important:', id);
+    };
+
+    onToggleDone = (id) => {
+        console.log('Toggle Done:', id);
     };
 
     render() {
@@ -65,6 +81,8 @@ export default class App extends Component {
                 <TodoList
                     todos={this.state.todoData}
                     onDeleted={this.deleteItem}
+                    onToggleImportant={this.onToggleImportant}
+                    onToggleDone={this.onToggleDone}
                 />
                 <ItemAddForm onItemAdded={this.addItem}/>
             </div>
