@@ -13,22 +13,19 @@ export default class App extends Component {
 
     state = {
         todoData: [
-            {
-                id: 1,
-                label: 'Drink green tea.',
-                important: false
-            },
-            {
-                id: 2,
-                label: 'Make awesome todo-react app',
-                important: true
-            },
-            {
-                id: 3,
-                label: 'Take a walk on nature.',
-                important: false
-            }
+            this.createTodoItem('Drink green tea'),
+            this.createTodoItem('Make awesome todo-react app'),
+            this.createTodoItem('Take a walk on nature.')
         ]
+    };
+
+    createTodoItem(text) {
+        return {
+            id: this.maxId++,
+            label: `Some text`,
+            important: false,
+            done: false
+        }
     };
 
     deleteItem = (id) => {
