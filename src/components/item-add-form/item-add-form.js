@@ -3,16 +3,32 @@ import './item-add-form.css'
 
 export default class ItemAddForm extends Component {
 
+    state = {
+        label: ''
+    };
+
+    onLabelChange = (e) => {
+      this.setState({
+        label: e.target.value
+      })
+    };
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        this.props.onItemAdded(this.state.label);
+    };
+
     render () {
         return (
-            <form className="item-add-form">
-                <input type="text" placeholder="Input name task"/>
+            <form className="item-add-form" onSubmit={this.onSubmit}>
+                <input
+                    type="text"
+                    onChange={this.onLabelChange}
+                    placeholder="Input name task"/>
                 <button
                     className="btn btn-outline-secondary"
-                    onClick={() => this.props.onItemAdded('Hello')}
                 >Add task</button>
             </form>
-
         )
     }
 
