@@ -22,7 +22,7 @@ export default class App extends Component {
     createTodoItem(text) {
         return {
             id: this.maxId++,
-            label: `Some text`,
+            label: text,
             important: false,
             done: false
         }
@@ -41,13 +41,9 @@ export default class App extends Component {
         });
     };
 
-    addItem = () => {
+    addItem = (text) => {
 
-        const newItem = {
-            id: this.maxId++,
-            label: `Some text`,
-            important: false
-        };
+        const newItem = this.createTodoItem(text);
 
         this.setState(({todoData}) => {
             const newArr = [...todoData, newItem];
