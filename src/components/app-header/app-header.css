@@ -1,10 +1,12 @@
 .app-header {
     display: flex;
     align-items: flex-end;
+    flex-wrap: wrap;
 }
 
 .app-header h1 {
     flex-grow: 1;
+    margin-right: 1rem;
 }
 
 .app-header h2 {
