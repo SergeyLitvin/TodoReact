@@ -91,11 +91,15 @@ export default class App extends Component {
 
         return (
             <div className="container">
+
                 <AppHeader toDo={todoCount} done={doneCount}/>
+
                 <div className="search-panel-wrap">
                     <SearchPanel/>
                     <ItemStatusFilter/>
                 </div>
+
+                <ItemAddForm onItemAdded={this.addItem}/>
 
                 <TodoList
                     todos={todoData}
@@ -103,7 +107,7 @@ export default class App extends Component {
                     onToggleImportant={this.onToggleImportant}
                     onToggleDone={this.onToggleDone}
                 />
-                <ItemAddForm onItemAdded={this.addItem}/>
+
             </div>
         )
     }
