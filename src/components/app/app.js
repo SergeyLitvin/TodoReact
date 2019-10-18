@@ -18,7 +18,7 @@ export default class App extends Component {
             this.createTodoItem('Take a walk on nature.')
         ],
         searchText: '',
-        filter: 'active'
+        filter: 'all'
     };
 
     createTodoItem(text) {
@@ -95,20 +95,23 @@ export default class App extends Component {
     };
 
     filter = (items, filter) => {
-
         switch(filter) {
             case 'all':
                 return items;
 
             case 'active':
-                return items.filter((item) => !items.done);
+                return items.filter((item) => !item.done);
 
             case 'done':
-                return items.filter((item) => items.done);
+                return items.filter((item) => item.done);
 
             default:
                 return items;
-        };
+        }
+    };
+
+    onFilterChange = (filter) => {
+      this.setState({filter});
     };
 
     render() {
@@ -123,8 +126,12 @@ export default class App extends Component {
                 <AppHeader toDo={todoCount} done={doneCount}/>
 
                 <div className="search-panel-wrap">
-                    <SearchPanel onSearchChange={this.onSearchChange}/>
-                    <ItemStatusFilter/>
+                    <SearchPanel
+                        onSearchChange={this.onSearchChange}/>
+                    <ItemStatusFilter
+                        filter={filter}
+                        onFilterChange={this.onFilterChange}
+                    />
                 </div>
 
                 <ItemAddForm onItemAdded={this.addItem}/>
