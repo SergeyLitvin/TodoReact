@@ -17,7 +17,8 @@ export default class App extends Component {
             this.createTodoItem('Make awesome todo-react app'),
             this.createTodoItem('Take a walk on nature.')
         ],
-        searchText: ''
+        searchText: '',
+        filter: 'active'
     };
 
     createTodoItem(text) {
@@ -93,11 +94,28 @@ export default class App extends Component {
         });
     };
 
+    filter = (items, filter) => {
+
+        switch(filter) {
+            case 'all':
+                return items;
+
+            case 'active':
+                return items.filter((item) => !items.done);
+
+            case 'done':
+                return items.filter((item) => items.done);
+
+            default:
+                return items;
+        };
+    };
+
     render() {
-        const {todoData, searchText} = this.state;
+        const {todoData, searchText, filter} = this.state;
         const doneCount = todoData.filter((el) => el.done).length;
         const todoCount = todoData.length - doneCount;
-        const visibleItems = this.searchTasks(todoData, searchText);
+        const visibleItems = this.filter(this.searchTasks(todoData, searchText), filter);
 
         return (
             <div className="container">
