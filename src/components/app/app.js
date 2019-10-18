@@ -9,7 +9,7 @@ import './app.css';
 
 
 export default class App extends Component {
-    maxId = 100;
+    startId = 0;
 
     state = {
         todoData: [
@@ -21,7 +21,7 @@ export default class App extends Component {
 
     createTodoItem(text) {
         return {
-            id: this.maxId++,
+            id: this.startId++,
             label: text,
             important: false,
             done: false
@@ -79,6 +79,10 @@ export default class App extends Component {
         })
     };
 
+    filteringFoundTasks = (searchText) => {
+        console.log(searchText);
+    };
+
     render() {
 
         const { todoData } = this.state;
@@ -93,7 +97,7 @@ export default class App extends Component {
                 <AppHeader toDo={todoCount} done={doneCount}/>
 
                 <div className="search-panel-wrap">
-                    <SearchPanel/>
+                    <SearchPanel onSearch={this.filteringFoundTasks}/>
                     <ItemStatusFilter/>
                 </div>
 
