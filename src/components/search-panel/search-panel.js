@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './search-panel.css';
 
-const SearchPanel = () => {
-    return (
-        <input type="text" placeholder="Search" className="search-input" />
-    )
-};
+export default class SearchPanel extends Component {
 
-export default SearchPanel;
+    state = {
+        searchText: ''
+    };
+
+    render() {
+        return (
+            <input type="text" placeholder="Search" className="search-input" />
+        )
+    }
+};
