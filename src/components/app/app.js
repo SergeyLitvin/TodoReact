@@ -89,7 +89,7 @@ export default class App extends Component {
         }
 
         return items.filter((item) => {
-            return item.label.indexOf(searchText) > -1;
+            return item.label.toLowerCase().indexOf(searchText.toLowerCase()) > -1;
         });
     };
 
@@ -112,10 +112,10 @@ export default class App extends Component {
                 <ItemAddForm onItemAdded={this.addItem}/>
 
                 <TodoList
-                    todos={ visibleItems }
-                    onDeleted={ this.deleteItem }
-                    onToggleImportant={ this.onToggleImportant }
-                    onToggleDone={ this.onToggleDone }
+                    todos={visibleItems}
+                    onDeleted={this.deleteItem}
+                    onToggleImportant={this.onToggleImportant}
+                    onToggleDone={this.onToggleDone}
                 />
 
             </div>
